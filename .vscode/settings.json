@@ -1,0 +1,5 @@
+{
+  "redhat.telemetry.enabled": false,
+  "sops.beta": true,
+  "ansible.python.interpreterPath": "/bin/python3"
+}

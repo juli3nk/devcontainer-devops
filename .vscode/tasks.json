@@ -1,0 +1,133 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "age keygen",
+      "type": "shell",
+      "command": "age-keygen",
+      "problemMatcher": [],
+      "args": [
+        "-o",
+        "~/.sops/registry.key"
+      ]
+    },
+    {
+      "label": "age get public key",
+      "type": "shell",
+      "command": "grep",
+      "problemMatcher": [],
+      "args": [
+        "-oP",
+        "'public key: \K(.*)'",
+        "~/.sops/registry.key"
+      ]
+    },
+    {
+      "label": "aws login",
+      "type": "shell",
+      "command": "awscli",
+      "problemMatcher": [],
+      "args": [
+        "login"
+      ]
+    },
+    {
+      "label": "terraform init",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/terraform"
+      },
+      "command": "terraform",
+      "problemMatcher": [],
+      "args": [
+        "init"
+      ]
+    },
+    {
+      "label": "terraform format",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/terraform"
+      },
+      "command": "terraform",
+      "problemMatcher": [],
+      "args": [
+        "fmt",
+        "--recursive"
+      ]
+    },
+    {
+      "label": "terraform lint",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/terraform"
+      },
+      "command": "tflint",
+      "problemMatcher": []
+    },
+    {
+      "label": "ansible-galaxy install requirements",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/ansible"
+      },
+      "command": "ansible-galaxy",
+      "problemMatcher": [],
+      "args": [
+        "install",
+        "-r",
+        "collections/requirements.yml"
+      ]
+    },
+    {
+      "label": "ansible lint",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/ansible"
+      },
+      "command": "ansible-lint",
+      "problemMatcher": []
+    },
+    {
+      "label": "ansible-inventory",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/ansible"
+      },
+      "command": "ansible-inventory",
+      "problemMatcher": [],
+      "args": [
+        "-i",
+        "inventory/tfstate.yml",
+        "--graph",
+        "--vars"
+      ]
+    },
+    {
+      "label": "ansible-playbook",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/ansible"
+      },
+      "command": "ansible-playbook",
+      "problemMatcher": [],
+      "args": [
+        "playbook.yml",
+        "-i",
+        "inventory/tfstate.yml"
+      ]
+    },
+    {
+      "label": "helmfile apply",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/helmfile"
+      },
+      "command": "helmfile",
+      "problemMatcher": [],
+      "args": [
+        "apply"
+      ]
+    }
+  ]
+}

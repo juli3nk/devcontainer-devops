@@ -1,0 +1,63 @@
+{
+  "name": "DevOps in DevContainer",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".",
+    "args": {
+      "UBUNTU_VERSION": "22.04",
+      "UBUNTU_CODENAME": "jammy",
+      "AGE_VERSION": "1.1.1",
+      "ANSIBLE_VERSION": "",
+      "ANSIBLE_LINT_VERSION": "6.22.1",
+      "AWSCLI_VERSION": "2.13.37",
+      "HELM_VERSION": "3.13.2",
+      "HELMFILE_VERSION": "0.159.0",
+      "KREW_VERSION": "0.4.4",
+      "KUBECTL_VERSION": "1.28.4",
+      "SOPS_VERSION": "3.8.1",
+      "TERRAFORM_VERSION": "1.6.6",
+			"TFLINT_VERSION": "0.49.0"
+		}
+  },
+  "mounts": [
+		"type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock",
+    "type=bind,source=${localEnv:HOME}/.config/git,target=/home/vscode/.config/git",
+    "type=bind,source=${localEnv:HOME}/.ssh/config,target=/home/vscode/.ssh/config",
+		"type=bind,source=${localEnv:HOME}/.kube,target=/home/vscode/.kube",
+    "type=bind,source=${localEnv:HOME}/.sops,target=/home/vscode/.sops",
+    "type=bind,source=${localEnv:HOME}/.aws,target=/home/vscode/.aws"
+	],
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.profiles.linux": {
+          "bash (login)": {
+            "path": "bash",
+            "args": ["-l"]
+          }
+        },
+        "terminal.integrated.defaultProfile.windows": "bash (login)"
+      },
+      "extensions": [
+        "visualstudioexptteam.vscodeintellicode",
+        "esbenp.prettier-vscode",
+        "editorconfig.editorconfig",
+        "mads-hartmann.bash-ide-vscode",
+				"rogalmic.bash-debug",
+        "ms-python.python",
+        "signageos.signageos-vscode-sops",
+        "hashicorp.terraform",
+        "hashicorp.hcl",
+        "redhat.ansible",
+        "redhat.vscode-yaml",
+        "ms-kubernetes-tools.vscode-kubernetes-tools",
+        "ms-azuretools.vscode-docker",
+        "gitlab.gitlab-workflow",
+        "dagger.dagger"
+      ]
+    }
+  },
+  "remoteUser": "vscode",
+  "workspaceFolder": "/home/vscode/Workspaces",
+	"workspaceMount": "type=bind,source=${localWorkspaceFolder},target=${containerWorkspaceFolder}"
+}
