@@ -1,0 +1,74 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "terraform init",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/terraform"
+      },
+      "command": "terraform",
+      "problemMatcher": [],
+      "args": [
+        "init"
+      ]
+    },
+    {
+      "label": "terraform format",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/terraform"
+      },
+      "command": "terraform",
+      "problemMatcher": [],
+      "args": [
+        "fmt",
+        "--recursive"
+      ]
+    },
+    {
+      "label": "terraform lint",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/terraform"
+      },
+      "command": "tflint",
+      "problemMatcher": []
+    },
+    {
+      "label": "ansible-galaxy install requirements",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/ansible"
+      },
+      "command": "ansible-galaxy",
+      "problemMatcher": [],
+      "args": [
+        "install",
+        "-r",
+        "collections/requirements.yml"
+      ]
+    },
+    {
+      "label": "ansible lint",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/ansible"
+      },
+      "command": "ansible-lint",
+      "problemMatcher": []
+    },
+    {
+      "label": "ansible-playbook",
+      "type": "shell",
+      "options": {
+        "cwd": "${workspaceFolder}/ansible"
+      },
+      "command": "ansible-playbook",
+      "problemMatcher": [],
+      "args": [
+        "-i"
+      ]
+    }
+  ]
+}
