@@ -10,6 +10,8 @@ Depending on the environment created, select the necessary components and adjust
 * List of local directories that will be mounted in the dev container.
 * Enable VSCode extensions depending of tools used.
 
+ms-vscode-remote.remote-containers
+
 ### Build image locally
 
 Instead of using the built image, it can be built locally and the devcontainer configuration file (`.devcontainer/devcontainer.json`) needs to be modified to replace the key `image` with the code below:
@@ -45,8 +47,6 @@ Instead of using the built image, it can be built locally and the devcontainer c
 * ${HOME}/.aws
 
 ### VSCode extensions
-
-
 
 ## Getting Started
 

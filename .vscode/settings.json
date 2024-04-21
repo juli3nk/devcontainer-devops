@@ -1,5 +1,6 @@
 {
   "redhat.telemetry.enabled": false,
   "sops.beta": true,
+  "sops.defaults.ageKeyFile": "/home/vscode/.sops/devops.key",
   "ansible.python.interpreterPath": "/bin/python3"
 }
